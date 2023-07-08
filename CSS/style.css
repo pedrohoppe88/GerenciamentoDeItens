@@ -1,0 +1,33 @@
+.custom-navbar {
+      background-color: rgba(0, 0, 0, 0.301);
+}
+
+.custom-navbar ul li a {
+      font-size: 17px;
+      transition: ease-in-out 0.3s;
+}
+
+.custom-navbar ul li a:hover{
+      color:rgb(5, 177, 245);
+      font-size: 18px;
+      transition: 0.3s;
+}
+
+.form-control {
+      max-width: 100%;
+      width: 400px;
+      border-radius: 20px;
+}
+
+#bntLogin {
+      max-width: 100%;
+      border-radius: 20px;
+      margin-top: 20px;
+      width: 120px;
+}
+
+.carousel-inner > .carousel-item > img {
+      max-width: 100%;
+      height: 561px;
+    }
+
