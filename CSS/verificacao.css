@@ -1,0 +1,19 @@
+.validaSenha{
+      display: none;
+}
+
+.validaEmail{
+      display: none;
+}
+
+.senhaIncorreta {
+      display: block;
+      color: red;
+      margin-top: 5px;
+}
+
+.emailIncorreta {
+      display: block;
+      color: red;
+      margin-top: 5px;
+}

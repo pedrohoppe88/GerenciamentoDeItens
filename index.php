@@ -8,9 +8,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/verificacao.css">
 
   <style>
-    
   </style>
 
 </head>
@@ -80,19 +80,21 @@
   <span class="carousel-control-next-icon"></span>
 </button>
 </div>
+</div>
 
-          </div>
           <div class="col-md-5">
           <div class="d-flex justify-content-center">
-                <form method="post" action="controller/loginController.php">
+                <form method="post" action="controller/loginController.php" id="formId">
                   <h1 class="display-4">Faça seu login aqui:</h1>
                     <div class="mb-3 mt-3">
                       <label for="email" class="form-label">Email:</label>
                       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                      <p class="validaEmail">Email Invalido</p>
                     </div>
                     <div class="mb-3">
                       <label for="pwd" class="form-label">Password:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="senha">
+                      <input type="password" class="form-control" id="senha" placeholder="Enter password" name="senha">
+                      <p class="validaSenha">senha Invalido</p>
                     </div>
 
                       <input type="submit" class="btn btn-primary mb-5" id="bntLogin"></input>
@@ -107,7 +109,7 @@
                     if (isset($cod)) {
                         if ($cod == '171') {
                             echo ('<br><div class="alert alert-danger">');
-                            echo ('Verifique usuário ou senha.');
+                            echo ('Erro ao logar');
                             echo ('</div>');
                         } else if($cod == '172') {
                           echo ('<br><div class="alert alert-warning">');
@@ -124,5 +126,7 @@
       </div>
   </section>
 
+
+  <script src="JS/validacaoFront.js"></script>
 </body>
 </html>
