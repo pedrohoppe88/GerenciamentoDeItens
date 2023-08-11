@@ -40,7 +40,7 @@
         </li>
       </ul>
       
-        <button class="btn btn-primary" type="button">Conectar</button>
+        <button class="btn btn-primary" type="button">Criar Conta</button>
     </div>
   </div>
 </nav>
@@ -89,12 +89,10 @@
                     <div class="mb-3 mt-3">
                       <label for="email" class="form-label">Email:</label>
                       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                      <p class="validaEmail">Email Invalido</p>
                     </div>
                     <div class="mb-3">
                       <label for="pwd" class="form-label">Password:</label>
                       <input type="password" class="form-control" id="senha" placeholder="Enter password" name="senha">
-                      <p class="validaSenha">senha Invalido</p>
                     </div>
 
                       <input type="submit" class="btn btn-primary mb-5" id="bntLogin"></input>
@@ -109,7 +107,7 @@
                     if (isset($cod)) {
                         if ($cod == '171') {
                             echo ('<br><div class="alert alert-danger">');
-                            echo ('Erro ao logar');
+                            echo ('Email e/ou Senha incorreta');
                             echo ('</div>');
                         } else if($cod == '172') {
                           echo ('<br><div class="alert alert-warning">');
