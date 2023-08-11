@@ -31,8 +31,9 @@
 /* Carousel custom styles */
 
 .carousel-item {
+      max-width: 100%;
       width: 100%;
-      height: 52rem;
+      height: 51rem;
 }
 
 .carousel-caption {
@@ -162,6 +163,17 @@ footer a:hover {
 
 .container {
     margin: 80px auto;  /* Uniformizando margens */
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 1660px) {
+    .carousel-item {
+        height: auto;  /* Ajustando o tamanho do carrossel para dispositivos móveis */
+    }
+
+    .blockquote {
+        font-size: 14px;  /* Ajustando o tamanho da fonte dos depoimentos para dispositivos móveis */
+    }
 }
 
 /* Ajustes para dispositivos móveis */
