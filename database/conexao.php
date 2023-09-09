@@ -1,17 +1,20 @@
 <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "asasasas";
-  $dbname = "bichochiquedds";
+class Conexao {
+    protected $mysqli;
+    protected $server = '127.0.0.1'; 
+    protected $user = 'root'; 
+    protected $pass = ''; 
+    protected $dataBase = 'teste'; 
 
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);  // now you need put'new'
-  if (mysqli_connect_errno())
-  {
-      die("Connection failed: " . mysqli_connect_error());
-  } else {
-    echo "Connected successfully";
-    $mysqli->close();
+  public function Conectar(){
+      $this->mysqli = new mysqli($this->server, $this->user, $this->pass, $this->dataBase);
+      if ($this->mysqli->errno) {
+         echo("Problema na conexao com banco de dados. Erro:" . $this->mysqli->connect_errno);
+         exit();
+      }
+      
+      $this->mysqli->set_charset('utf8');
   }
-  
+}
+
 ?>

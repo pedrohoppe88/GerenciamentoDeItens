@@ -1,25 +1,30 @@
 <?php
-      //se tiver qualquer coisa via post
-      if($_POST) {
+if ($_POST) {
+      $email = $_POST['email'];
+      $senha = $_POST['senha'];
+      @$remember = $_POST['$remember'];
 
-            //entra aqui para pegar os valores
-            $email = $_POST['email'];
-            $senha = $_POST['senha'];
-            
-            //executar a consulta
-            if($email == 'admim@admim' && $senha == '123')  {
-                  
-                  //Abrir a sessão
-                  session_start();
-                  $_SESSION['login'] = $email;
+      if ($email == 'admim@admim' && $senha == '123') {
+            session_start();
+            $_SESSION['login'] = $email;
 
-                  header('location:../home.php');
-            } else {
-                  //login invalido
-                  header('location:../index.php?cod=171');
+            if (isset($remember)) {
+                  if ($remember == 1) {
+                        setcookie('email', $email, time() + (86400 * 1), "/"); // 86400 = 1 day
+                  } else {
+                        if (isset($_COOKIE['email'])) {
+                              setcookie("email", "", time() - 3600);
+                        }
+                  }
             }
+
+            header('location:../home.php');
       } else {
-            //redireciona para a index
-            header('location:../index.php');
+            header('location:../index.php?cod=171'); //passndo uma query string de erro = '171'
       }
+
+} else {
+      header('location:../index.php?cod=171');
+}
+
 ?>
