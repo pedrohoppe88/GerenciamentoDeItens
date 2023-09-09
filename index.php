@@ -361,15 +361,12 @@
                                     <form method="post" action="controller/loginController.php">
                                         <div class="form-group">
                                             <label for="email">Endereço de Email</label>
-
-                                            <?php  
-                                            
-                                                if(isset($_COOKIE['email']))
-                                                {
-                                                    echo '<input class="form-control" name="email" type="email" value="'.$_COOKIE['email'].'" placeholder="Email or phone number">';
-                                                } else {
-                                                    echo '<input class="form-control" name="email" type="email" value="" placeholder="Email or phone number">';
-                                                }
+                                            <?php
+                                            if (isset($_COOKIE['email'])) {
+                                                echo '<input class="form-control" name="email" type="email" value="' . $_COOKIE['email'] . '" placeholder="Email or phone number">';
+                                            } else {
+                                                echo '<input class="form-control" name="email" type="email" value="" placeholder="Email or phone number">';
+                                            }
 
                                             ?>
 
@@ -382,16 +379,7 @@
 
                                         <div class="form-group form-check">
 
-                                            <?php
-
-                                                if (isset($_COOKIE['email'])) {
-                                                    echo '<input class="" checked value="1" name="lembrar"  type="checkbox" id="lembrar"></input>';
-                                                } else {
-                                                    echo '<input class="" value="1" name="lembrar" type="checkbox" id="lembrar"></input>';
-                                                }
-
-                                            ?>
-
+                                            <input class="form-check-input" type="checkbox" name="remember" <?php echo isset($_COOKIE['email']) ? 'checked' : ''; ?>>
                                             <label class="form-check-label" for="lembrar">Lembrar-me</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block">Entrar</button>
