@@ -358,17 +358,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Login</h5>
-                                    <form method="post" action="controller/loginController.php">
+                                    <form method="post" action="controller/cadastroController.php">
                                         <div class="form-group">
                                             <label for="email">Endereço de Email</label>
-                                            <?php
-                                            if (isset($_COOKIE['email'])) {
-                                                echo '<input class="form-control" name="email" type="email" value="' . $_COOKIE['email'] . '" placeholder="Email or phone number" required>';
-                                            } else {
-                                                echo '<input class="form-control" name="email" type="email" value="" placeholder="Email or phone number" required>';
-                                            }
-
-                                            ?>
+                                            '<input class="form-control" name="email" type="email" value="' . $_COOKIE['email'] . '" placeholder="Email or phone number" required>';
 
                                         </div>
                                         <div class="form-group">
