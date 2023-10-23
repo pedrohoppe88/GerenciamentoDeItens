@@ -11,9 +11,9 @@ class Conexao
     public function __construct()
     {
         $this->host = 'localhost';
-        $this->dbname = "netflix";
+        $this->dbname = "gerenciamentoDeItens";
         $this->user = 'root';
-        $this->password = 'lasanh@123';
+        $this->password = 'teste';
         $this->connect();
     }
 
