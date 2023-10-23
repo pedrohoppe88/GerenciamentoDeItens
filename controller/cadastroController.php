@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['senha'];
 
     if (empty($email) || empty($password))
     {
@@ -16,7 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $user = new Usuario();
 
     if ($user->register($email, $password)) {
-        header('location:../cadastro.php'); 
+
+        session_start();
+        $_SESSION['login'] = $email;
+        header('location:../home.php'); 
        
     } else {
         header("Location: erro_registro.php");
