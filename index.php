@@ -154,7 +154,7 @@
 
         /* Footer */
         footer {
-            background-color: #2c3e50;
+            background-color: #ecf0f1;
         }
 
         footer a {
@@ -340,6 +340,8 @@
         <div class="container mt-5 text-center">
             <h2>Pronto para começar sua jornada?</h2>
             <p>Registre-se agora e explore todas as funcionalidades que oferecemos.</p>
+            <!-- Button trigger modal -->
+            <!-- Button to Open the Modal -->
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Open
                 Modal</button>
 
@@ -356,10 +358,18 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Login</h5>
-                                    <form method="post" action="controller/cadastroController.php">
+                                    <form method="post" action="controller/loginController.php">
                                         <div class="form-group">
                                             <label for="email">Endereço de Email</label>
-                                             <input class="form-control" name="email" type="email" value="" placeholder="Email or phone number">
+                                            <?php
+                                            if (isset($_COOKIE['email'])) {
+                                                echo '<input class="form-control" name="email" type="email" value="' . $_COOKIE['email'] . '" placeholder="Email or phone number" required>';
+                                            } else {
+                                                echo '<input class="form-control" name="email" type="email" value="" placeholder="Email or phone number" required>';
+                                            }
+
+                                            ?>
+
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Senha</label>
@@ -390,7 +400,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                         </div>
                     </div>
 
