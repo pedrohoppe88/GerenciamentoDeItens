@@ -11,7 +11,7 @@ class Conexao
     public function __construct()
     {
         $this->host = 'localhost';
-        $this->dbname = "gerenciamentoDeItens";
+        $this->dbname = "imp";
         $this->user = 'root';
         $this->password = 'teste';
         $this->connect();
