@@ -357,11 +357,11 @@
                         <div class="modal-body">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">Login</h5>
+                                    <h5 class="card-title text-center">Cadastro</h5>
                                     <form method="post" action="controller/cadastroController.php">
                                         <div class="form-group">
                                             <label for="email">Endereço de Email</label>
-                                            '<input class="form-control" name="email" type="email" value="' . $_COOKIE['email'] . '" placeholder="Email or phone number" required>';
+                                            <input class="form-control" name="email" type="email" value= "" placeholder="Email or phone number" required>
 
                                         </div>
                                         <div class="form-group">
@@ -369,12 +369,7 @@
                                             <input type="password" class="form-control" id="password" name="senha"
                                                 placeholder="Password" required="">
                                         </div>
-
-                                        <div class="form-group form-check">
-
-                                            <input class="form-check-input" type="checkbox" name="remember" <?php echo isset($_COOKIE['email']) ? 'checked' : ''; ?>>
-                                            <label class="form-check-label" for="lembrar">Lembrar-me</label>
-                                        </div>
+                                        
                                         <button type="submit" class="btn btn-primary btn-block">Entrar</button>
 
                                         <?php

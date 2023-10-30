@@ -13,7 +13,7 @@ class Conexao
         $this->host = 'localhost';
         $this->dbname = "netflix";
         $this->user = 'root';
-        $this->password = 'lasanh@123';
+        $this->password = '123';
         $this->connect();
     }
 
