@@ -16,7 +16,7 @@
                 <div class="formm">
 
                     <form method="post" action="controller/cadastroController.php">
-                        <h1>Criar conta</h1>
+                        <h1>Criar conta</h1> 
 
                         <div class="row">
                             <div class="col-md-12 text-center">

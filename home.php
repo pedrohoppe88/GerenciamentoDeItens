@@ -36,6 +36,7 @@
         <div class="ml-auto">
             <img src="url_da_foto_do_usuario" alt="Nome do Usuário" class="rounded-circle" width="40">
             <span class="text-white">Nome do Usuário</span>
+            <a class="text-white" href="./controller/logoutController.php?cod=logout">Logout</a>
         </div>
     </nav>
 

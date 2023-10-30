@@ -13,9 +13,11 @@ class Conexao
         $this->host = 'localhost';
         $this->dbname = "imp";
         $this->user = 'root';
-        $this->password = 'teste';
+        $this->password = 'ratazana@1';
         $this->connect();
     }
+// so colar o codigo que esta em Banco.sql na query do SQL Workbench
+// login teste é cadastro
 
     public function connect()
     {
