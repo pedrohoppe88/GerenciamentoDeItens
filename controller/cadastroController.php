@@ -18,10 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result === "Registro bem-sucedido.") {
         session_start();
         $_SESSION['login'] = $email;
-        header('location: ../home.php'); 
+        header('location: ../loginpage.php'); 
         exit();
     } else {
-        header("Location: erro_registro.php?error=");
+        header('Location: ../index.php?cod=171');
         exit();
     }
 }

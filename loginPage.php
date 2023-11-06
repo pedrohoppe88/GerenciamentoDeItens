@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -9,6 +9,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
+
+      body{
+        background-image: linear-gradient(to bottom right, gray, black);
+
+      }
+
         .area-login {
             display:flex;
             justify-content: center;
@@ -48,31 +54,47 @@
             border: none;
         }
 
+        .linkcard {
+          text-decoration:none;
+          width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+  top: 50 px;
+        }
+
+        
+
+
 
     </style>
 
 </head>
 <body>
 
+
+
 <section>
     <div class="area-login">
         <div class="login">
         <form method="post" action="controller/loginController.php">
     <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <label style="color:#fff;" for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Insira o Email" name="email">
     </div>
     <div class="form-group">
-      <label for="senha">Password:</label>
-      <input type="password" class="form-control" id="senha" placeholder="Enter password" name="senha">
+      <label style="color:#fff;" for="senha">Password:</label>
+      <input type="password" class="form-control" id="senha" placeholder="Insira a Senha" name="senha">
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" name="remember"> Remember me</label>
+      <label style="color:#fff;"><input type="checkbox" name="remember"> Remember me</label>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default">Enviar</button>
   </form>
+  <a class="linkcard" href="">Precisa de Ajuda?</a>
         </div>
     </div>
+
 </section>
 
 </body>
