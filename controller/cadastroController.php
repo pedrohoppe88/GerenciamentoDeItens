@@ -2,27 +2,26 @@
 
 require_once '../usuarios.class.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome']; 
     $email = $_POST['email'];
-    $password = $_POST['senha'];
+    $senha = $_POST['senha'];
 
-    if (empty($email) || empty($password))
-    {
-        die("Dados inválidos.");
+    if (empty($nome) || empty($email) || empty($senha)) {
+        die("Dados inválidos."); 
     }
 
     $user = new Usuario();
 
-    if ($user->register($email, $password)) {
+    $result = $user->register($nome, $email, $senha); 
 
+    if ($result === "Registro bem-sucedido.") {
         session_start();
         $_SESSION['login'] = $email;
-        header('location:../home.php'); 
-       
+        header('location: ../home.php'); 
+        exit();
     } else {
-        header("Location: erro_registro.php");
+        header("Location: erro_registro.php?error=");
         exit();
     }
 }

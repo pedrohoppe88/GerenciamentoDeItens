@@ -364,6 +364,13 @@
                                             <input class="form-control" name="email" type="email" value= "" placeholder="Email or phone number" required>
 
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="password">name</label>
+                                            <input type="text" class="form-control" id="name" name="nome"
+                                                placeholder="Nome" required="">
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="password">Senha</label>
                                             <input type="password" class="form-control" id="password" name="senha"

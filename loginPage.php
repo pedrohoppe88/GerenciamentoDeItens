@@ -57,18 +57,14 @@
 <section>
     <div class="area-login">
         <div class="login">
-        <form action="/action_page.php">
+        <form method="post" action="controller/loginController.php">
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
     </div>
     <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="name" class="form-control" id="name" placeholder="Enter username" name="email">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter password" name="pwd">
+      <label for="senha">Password:</label>
+      <input type="password" class="form-control" id="senha" placeholder="Enter password" name="senha">
     </div>
     <div class="checkbox">
       <label><input type="checkbox" name="remember"> Remember me</label>

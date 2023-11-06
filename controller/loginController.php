@@ -1,27 +1,60 @@
 <?php
-if ($_POST) {
-      $email = $_POST['email'];
-      $senha = $_POST['senha'];
+require_once "../model/conexaoPDO.php";
 
-      if ($email == 'admim@admim' && $senha == '123') {
-            session_start();
-            $_SESSION['login'] = $email;
+function checkLogin($conn, $email, $password) 
+{
+    $sql = "SELECT * FROM usuarios WHERE email = :email";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
 
-            if (isset($_POST['remember'])) { // apenas ferifica se ocorreu um post 'remember'
-                  setcookie('email', $email, time() + (86400 * 30), "/"); 
-            } else {
-                  if (isset($_COOKIE['user_email'])) {
-                        setcookie('email', '', time() - 3600, "/");
-                  }
-            }
+    if ($stmt->rowCount() > 0) {
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if (password_verify($password, $user['Senha']))
+        { 
+            return $user;
+        } else {
+            return false; 
+        }
+    } else {
+        return false; 
+    }
+}
 
-            header('location:../home.php');
-      } else {
-            header('location:../index.php?cod=171'); //passndo uma query string de erro = '171'
-      }
+if ($_SERVER["REQUEST_METHOD"] == "POST")
 
-} else {
-      header('location:../index.php?cod=171');
+{
+    $email = $_POST["email"];
+    $password = $_POST["senha"];
+    
+    $conexao = new Conexao();
+    $conn = $conexao->getConnection();
+
+    $user = checkLogin($conn, $email, $password);
+
+    if ($user) {
+      session_start();
+      $_SESSION['login'] = $email;
+
+        if(isset($lembrar))
+        {
+          if($lembrar == 1) {
+              
+              setcookie('email', $email, time() + (86400 * 7), "/");
+          }
+        
+        } else {
+          if(isset($_COOKIE['email']))
+              {
+                  setcookie("email", "", time() - 3600);
+              }
+        }
+        header("Location: ../home.php");
+
+    } else {
+        echo "Detalhes de login inválidos!";
+    }
 }
 
 ?>
