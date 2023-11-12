@@ -6,7 +6,6 @@ CREATE TABLE usuarios (
     Senha VARCHAR(255) NOT NULL
 );
 
--- Tabela de Grupos
 CREATE TABLE grupos (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     NomeGrupo VARCHAR(255) NOT NULL,

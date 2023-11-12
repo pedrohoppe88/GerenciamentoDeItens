@@ -239,12 +239,84 @@
             margin-top: 30px;
         }
 
-        body {}
+      
+        .alert {
+  position: relative;
+  top: 10;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin: 10px;
+  line-height: 1.8;
+  border-radius: 5px;
+  cursor: hand;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+.alertCheckbox {
+  display: none;
+}
+
+:checked + .alert {
+  display: none;
+}
+
+.alertText {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.alertClose {
+  float: right;
+  padding-top: 5px;
+  font-size: 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.info {
+  background-color: #EEE;
+  border: 1px solid #DDD;
+  color: #999;
+}
+
+.success {
+  background-color: #EFE;
+  border: 1px solid #DED;
+  color: #9A9;
+}
+
+.notice {
+  background-color: #EFF;
+  border: 1px solid #DEE;
+  color: #9AA;
+}
+
+.warning {
+  background-color: #FDF7DF;
+  border: 1px solid #FEEC6F;
+  color: #C9971C;
+}
+
+.error {
+  background-color: #FEE;
+  border: 1px solid #EDD;
+  color: #A66;
+}
+
     </style>
 
 </head>
 
 <body>
+
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg custom-navbar">
@@ -253,9 +325,11 @@
             <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+            <li class="nav-item"><a class="nav-link" href="loginPage.php">Login</a></li>
         </ul>
     </nav>
 
+    
     <!-- Slider -->
     <div id="customCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -292,6 +366,22 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
+    <?php
+                                        @$cod = $_REQUEST['cod'];
+                                        if (isset($cod)) {
+                                            if ($cod == '171') {
+                                                echo ('<label>');
+                                                echo ('<input type="checkbox" class="alertCheckbox" autocomplete="off" />');
+                                                echo ('<div class="alert error">');
+                                                echo ('  <span class="alertClose">X</span>');
+                                                echo (' <span class="alertText">Erro! Email Inválido.');
+                                                echo ('  <br class="clear"/></span>');
+                                                echo (' </div>');
+                                                echo ('</label>');
+                                            
+                                            }
+                                        }
+                                        ?>
 
     <!-- Cards -->
     <section class="CardSection">
@@ -361,12 +451,12 @@
                                     <form method="post" action="controller/cadastroController.php">
                                         <div class="form-group">
                                             <label for="email">Endereço de Email</label>
-                                            <input class="form-control" name="email" type="email" value= "" placeholder="Email or phone number" required>
+                                            <input class="form-control" name="email" type="email" value= "" placeholder="Email" required>
 
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="password">name</label>
+                                            <label for="password">Nome</label>
                                             <input type="text" class="form-control" id="name" name="nome"
                                                 placeholder="Nome" required="">
                                         </div>
@@ -379,16 +469,7 @@
                                         
                                         <button type="submit" class="btn btn-primary btn-block">Entrar</button>
 
-                                        <?php
-                                        @$cod = $_REQUEST['cod'];
-                                        if (isset($cod)) {
-                                            if ($cod == '171') {
-                                                echo ('<br><div class="alert alert-danger">');
-                                                echo ('Verifique usuário ou senha.');
-                                                echo ('</div>');
-                                            }
-                                        }
-                                        ?>
+                                    
 
                                     </form>
                                 </div>
