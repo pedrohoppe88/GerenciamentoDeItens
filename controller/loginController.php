@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     $user = checkLogin($conn, $email, $password);
 
-    if ($user) {
+    if ($user) { // é mesma coisa de que utilizar com isset
       session_start();
-      $_SESSION['login'] = $email;
+      $_SESSION['login'] = $user['id'];
 
         if(isset($lembrar))
         {
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         } else {
           if(isset($_COOKIE['email']))
               {
-                  setcookie("email", "", time() - 3600);
+                setcookie('email', $email, time() + (-86400 * 7), "/");
               }
         }
         header("Location: ../home.php");
