@@ -16,14 +16,11 @@ class Usuario {
         $check->execute();
 
         if ($check->rowCount() > 0) {
-            // Email já está em uso, retorne um erro
             return "Email já está em uso.";
         }
 
-        // Hash da senha
-        $hashedPassword = password_hash($senha, PASSWORD_DEFAULT);
+        $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
 
-        // Inserir o novo usuário com consultas preparadas
         $insertUserQuery = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
         $stmt = $this->conn->prepare($insertUserQuery);
         $stmt->bindParam(':nome', $nome);
@@ -31,10 +28,8 @@ class Usuario {
         $stmt->bindParam(':senha', $hashedPassword);
 
         if ($stmt->execute()) {
-            // Registro bem-sucedido
             return "Registro bem-sucedido.";
         } else {
-            // Erro durante o registro
             return "Erro durante o registro.";
         }
     }
