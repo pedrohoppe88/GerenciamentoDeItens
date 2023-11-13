@@ -1,5 +1,5 @@
 <?php
-require_once "../model/conexaoPDO.php";
+require_once "./model/conexaoPDO.php";
 
 function checkLogin($conn, $email, $password) 
 {
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if ($user) { 
       session_start();
       $_SESSION['login'] = $user['ID'];
-
+      $nome = $nameMostrar;
         if(isset($lembrar))
         {
           if($lembrar == 1) {

@@ -4,8 +4,15 @@
 
 <?php 
         require_once './model/conexaoPDO.php';
+        require_once './controller/loginController.php';
 
-      
+        
+        @session_start();
+
+  //      $email = $_SESSION['email'];
+        
+ // pegar o name com base na sessão e exibir no nome em cima
+        
 ?>
 
     <meta charset="UTF-8">
@@ -37,7 +44,7 @@
         <a class="navbar-brand" href="#">Nome do Jogo</a>
         <div class="ml-auto">
             <img src="url_da_foto_do_usuario" alt="Nome do Usuário" class="rounded-circle" width="40">
-            <span class="text-white">  </span>
+            <span class="text-white"> Nome Do Usuário </span>
             <a class="text-white" href="./controller/logoutController.php?cod=logout">Logout</a>
         </div>
     </nav>
