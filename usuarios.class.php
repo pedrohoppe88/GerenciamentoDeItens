@@ -25,7 +25,7 @@ class Usuario {
         $stmt = $this->conn->prepare($insertUserQuery);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', $hashedPassword);
+        $stmt->bindParam(':senha', $hashedSenha);
 
         if ($stmt->execute()) {
             return "Registro bem-sucedido.";
