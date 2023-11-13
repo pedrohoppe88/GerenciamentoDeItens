@@ -54,7 +54,6 @@
   </div>
 </div>
 
-<!-- Modal para Criar Grupo -->
 <div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -65,7 +64,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- Conteúdo do modal para criar grupo aqui -->
+
         <p>Insira os detalhes para criar um novo grupo aqui.</p>
       </div>
       <div class="modal-footer">
@@ -76,7 +75,6 @@
   </div>
 </div>
 
-<!-- Modal para Entrar em um Grupo Existente -->
 <div class="modal fade" id="joinGroupModal" tabindex="-1" role="dialog" aria-labelledby="joinGroupModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -87,7 +85,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- Conteúdo do modal para entrar em um grupo existente aqui -->
         <p>Insira os detalhes para entrar em um grupo existente aqui.</p>
       </div>
       <div class="modal-footer">
@@ -101,6 +98,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 <script>
+
+  
   $(document).ready(function() {
     var animationContainer = $("#animation-container");
     var animationText = "Crie ou Junte-se a um Grupo";

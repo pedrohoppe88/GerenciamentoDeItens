@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     $user = checkLogin($conn, $email, $password);
 
-    if ($user) { // é mesma coisa de que utilizar com isset
+    if ($user) { 
       session_start();
-      $_SESSION['login'] = $user['id'];
+      $_SESSION['login'] = $user['ID'];
 
         if(isset($lembrar))
         {

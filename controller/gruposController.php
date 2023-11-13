@@ -33,10 +33,8 @@ function displayGroupItems($groupID)
     }
     echo '</ul>';
 }
-
 } else {
-      exit('erro no login ou na sessão');
+    echo "erro";
 }
-
 
 ?>
