@@ -312,6 +312,16 @@
 }
 
     </style>
+<script>
+$(document).ready(function() {
+
+if(window.location.href.indexOf('#myModal') != -1) {
+  $('#myModal').modal('show');
+}
+
+});
+</script>
+
 
 </head>
 
@@ -436,7 +446,7 @@
                 Modal</button>
 
             <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal fade" name="myModal" id="myModal" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->

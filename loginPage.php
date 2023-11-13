@@ -60,9 +60,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-  top: 50 px;
         }
-
+.reg {
+  color: white;
+}
         
 
 
@@ -91,8 +92,10 @@
     </div>
     <button type="submit" class="btn btn-default">Enviar</button>
   </form>
-  <a class="linkcard" href="">Precisa de Ajuda?</a>
+</p>
+<a class="linkcard" href="index.php#myModal">Registrar-se</a>   
         </div>
+        
     </div>
 
 </section>
