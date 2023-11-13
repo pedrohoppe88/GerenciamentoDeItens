@@ -3,7 +3,9 @@
 <head>
 
 <?php 
-        require_once './controller/autenticationController.php'
+        require_once './model/conexaoPDO.php';
+
+      
 ?>
 
     <meta charset="UTF-8">
@@ -35,7 +37,7 @@
         <a class="navbar-brand" href="#">Nome do Jogo</a>
         <div class="ml-auto">
             <img src="url_da_foto_do_usuario" alt="Nome do Usuário" class="rounded-circle" width="40">
-            <span class="text-white">Nome do Usuário</span>
+            <span class="text-white">  </span>
             <a class="text-white" href="./controller/logoutController.php?cod=logout">Logout</a>
         </div>
     </nav>
@@ -56,20 +58,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">
-                                <span data-feather="plus-square"></span>
-                                Adicionar Itens
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
                                 <span data-feather="layers"></span>
-                                Categorias
+                                Grupos
                             </a>
+                        </li>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">
-                                <span data-feather="book-open"></span>
-                                Histórico
+                                <span data-feather="plus"></span>
+                                Adicionar Itens
                             </a>
                         </li>
                     </ul>
