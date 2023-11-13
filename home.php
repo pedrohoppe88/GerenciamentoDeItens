@@ -3,6 +3,7 @@
 <head>
 
 <?php 
+<<<<<<< HEAD
         require_once './model/conexaoPDO.php';
         require_once './controller/loginController.php';
 
@@ -13,6 +14,27 @@
         
  // pegar o name com base na sessão e exibir no nome em cima
         
+=======
+    
+
+if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
+    $userID = $_SESSION['login'];
+
+
+    $conexao = new Conexao();
+    $conn = $conexao->getConnection();
+
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID = :userID");
+    $stmt->execute([$userID]);
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<p>' . $row['nome'] . '</p>';
+
+    }
+    echo "giyfg";
+}  
+  
+>>>>>>> 271d1240c2f446706f8ad1eb1f7f1041649afe5f
 ?>
 
     <meta charset="UTF-8">
