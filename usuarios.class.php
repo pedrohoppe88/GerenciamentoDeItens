@@ -33,4 +33,9 @@ class Usuario {
             return "Erro durante o registro.";
         }
     }
+
+    public function getName()
+    {
+        return $nome;
+    }
 }

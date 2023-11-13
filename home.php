@@ -3,9 +3,25 @@
 <head>
 
 <?php 
-        require_once './model/conexaoPDO.php';
+    
 
-      
+if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
+    $userID = $_SESSION['login'];
+
+
+    $conexao = new Conexao();
+    $conn = $conexao->getConnection();
+
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID = :userID");
+    $stmt->execute([$userID]);
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<p>' . $row['nome'] . '</p>';
+
+    }
+    echo "giyfg";
+}  
+  
 ?>
 
     <meta charset="UTF-8">
