@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user) { 
         session_start();
         $_SESSION['login'] = $user['ID'];
-        $nome = $user['nome']; // Corrigido: atribuir o nome corretamente
+        $nome = $user['nome']; 
         if(isset($lembrar)) {
             if($lembrar == 1) {
                 setcookie('email', $email, time() + (86400 * 7), "/");
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 setcookie('email', $email, time() + (-86400 * 7), "/");
             }
         }
-        header("Location: ../home.php");
+        header("Location: ../teste/home.php");
     } else {
         echo "Detalhes de login inválidos!";
     }

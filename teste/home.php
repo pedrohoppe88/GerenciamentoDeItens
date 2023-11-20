@@ -24,15 +24,40 @@
       </style>
 
 </head>
+<?php
+include_once "../controller/loginController.php";
+
+session_start(); // Adicionado: iniciar a sessão
+
+if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
+    $userID = $_SESSION['login'];
+
+    $conexao = new Conexao();
+    $conn = $conexao->getConnection();
+
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID = :userID");
+    $stmt->bindParam(':userID', $userID); // Corrigido: usar bindParam para passar o valor
+    $stmt->execute();
+
+} else {
+    echo "erro";
+}
+?>
+
+
 <body>
 
     <!-- Navbar superior -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Nome do Jogo</a>
         <div class="ml-auto">
-            <img src="url_da_foto_do_usuario" alt="Nome do Usuário" class="rounded-circle" width="40">
-            <span class="text-white"> Nome Do Usuário </span>
-            <a class="text-white" href="./controller/logoutController.php?cod=logout">Logout</a>
+            <img src="url_da_foto_do_usuario" alt="" class="rounded-circle" width="40">
+            <span class="text-white"><?php
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<span>' . $row['Nome'] . '</span>';
+    }?></span>
+        <span><a class="text-red" href="./controller/logoutController.php?cod=logout">Logout</a></span>
+            
         </div>
     </nav>
 
