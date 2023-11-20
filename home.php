@@ -2,41 +2,6 @@
 <html lang="pt-br">
 <head>
 
-<?php 
-<<<<<<< HEAD
-        require_once './model/conexaoPDO.php';
-        require_once './controller/loginController.php';
-
-        
-        @session_start();
-
-  //      $email = $_SESSION['email'];
-        
- // pegar o name com base na sessão e exibir no nome em cima
-        
-=======
-    
-
-if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
-    $userID = $_SESSION['login'];
-
-
-    $conexao = new Conexao();
-    $conn = $conexao->getConnection();
-
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID = :userID");
-    $stmt->execute([$userID]);
-
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo '<p>' . $row['nome'] . '</p>';
-
-    }
-    echo "giyfg";
-}  
-  
->>>>>>> 271d1240c2f446706f8ad1eb1f7f1041649afe5f
-?>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Gerenciamento de Itens</title>
@@ -135,8 +100,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
 
       </div>
       </div>
-      
-    
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

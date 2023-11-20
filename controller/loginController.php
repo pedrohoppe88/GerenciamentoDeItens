@@ -1,5 +1,5 @@
 <?php
-require_once "./model/conexaoPDO.php";
+require_once "../model/conexaoPDO.php";
 
 function checkLogin($conn, $email, $password) 
 {
@@ -22,9 +22,7 @@ function checkLogin($conn, $email, $password)
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-
-{
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["senha"];
     
@@ -34,27 +32,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $user = checkLogin($conn, $email, $password);
 
     if ($user) { 
-      session_start();
-      $_SESSION['login'] = $user['ID'];
-      $nome = $nameMostrar;
-        if(isset($lembrar))
-        {
-          if($lembrar == 1) {
-              
-              setcookie('email', $email, time() + (86400 * 7), "/");
-          }
-        
+        session_start();
+        $_SESSION['login'] = $user['ID'];
+        $nome = $user['nome']; // Corrigido: atribuir o nome corretamente
+        if(isset($lembrar)) {
+            if($lembrar == 1) {
+                setcookie('email', $email, time() + (86400 * 7), "/");
+            }
         } else {
-          if(isset($_COOKIE['email']))
-              {
+            if(isset($_COOKIE['email'])) {
                 setcookie('email', $email, time() + (-86400 * 7), "/");
-              }
+            }
         }
         header("Location: ../home.php");
-
     } else {
         echo "Detalhes de login inválidos!";
     }
 }
-
 ?>
