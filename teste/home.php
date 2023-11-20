@@ -56,7 +56,8 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo '<span>' . $row['Nome'] . '</span>';
     }?></span>
-        <span><a class="text-red" href="./controller/logoutController.php?cod=logout">Logout</a></span>
+        <span><a class="text-red" href="../controller/logoutController.php?cod=logout">Logout</a></span>
+
             
         </div>
     </nav>
@@ -76,7 +77,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
+                            <a class="nav-link text-white" href="criacaoDeGrupos.php">
                                 <span data-feather="layers"></span>
                                 Grupos
                             </a>
