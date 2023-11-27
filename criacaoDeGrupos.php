@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Criar ou Entrar em um Grupo</title>
+      <!-- Bootstrap Dependencies -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -41,7 +47,7 @@
       transform: scale(1.05);
     }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">  
 </head>
 <body>
 
@@ -49,51 +55,57 @@
   <h1>Criar ou Entrar em um Grupo</h1>
   <div id="animation-container"></div>
   <div class="btnClass">
-    <button id="create-group" data-toggle="modal" data-target="#createGroupModal">Criar Grupo</button>
+    <button id="create-group" data-toggle="modal" data-target="#createModal">Criar Grupo</button>
     <button id="join-group" data-toggle="modal" data-target="#joinGroupModal">Entrar em um Grupo Existente</button>
   </div>
 </div>
 
-<div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="createGroupModalLabel">Criar Grupo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+<!-- Modal -->
+<div class="modal fade" name="createModal" id="createModal" role="dialog">
+    <div class="modal-dialog">
 
-        <p>Insira os detalhes para criar um novo grupo aqui.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Criar Grupo</button>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Cadastro</h5>
+                        <form method="post" action="controller/cadastroController.php">
+                            <div class="form-group">
+                                <label for="email">Endereço de Email</label>
+                                <input class="form-control" name="email" type="email" value= "" placeholder="Email" required>
 
-<div class="modal fade" id="joinGroupModal" tabindex="-1" role="dialog" aria-labelledby="joinGroupModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="joinGroupModalLabel">Entrar em um Grupo Existente</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Insira os detalhes para entrar em um grupo existente aqui.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Entrar no Grupo</button>
-      </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Nome</label>
+                                <input type="text" class="form-control" id="name" name="nome"
+                                    placeholder="Nome" required="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Senha</label>
+                                <input type="password" class="form-control" id="password" name="senha"
+                                    placeholder="Password" required="">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+
+                        
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
     </div>
-  </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>

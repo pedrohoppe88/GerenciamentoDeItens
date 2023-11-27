@@ -442,8 +442,7 @@ if(window.location.href.indexOf('#myModal') != -1) {
             <p>Registre-se agora e explore todas as funcionalidades que oferecemos.</p>
             <!-- Button trigger modal -->
             <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Open
-                Modal</button>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Registrar-se</button>
 
             <!-- Modal -->
             <div class="modal fade" name="myModal" id="myModal" role="dialog">

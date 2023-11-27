@@ -77,7 +77,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="criacaoDeGrupos.php">
+                            <a class="nav-link text-white" href="../criacaoDeGrupos.php">
                                 <span data-feather="layers"></span>
                                 Grupos
                             </a>
