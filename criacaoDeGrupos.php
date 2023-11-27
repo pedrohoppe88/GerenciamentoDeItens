@@ -75,21 +75,21 @@
                         <h5 class="card-title text-center">Cadastro</h5>
                         <form method="post" action="controller/cadastroController.php">
                             <div class="form-group">
-                                <label for="email">Endereço de Email</label>
-                                <input class="form-control" name="email" type="email" value= "" placeholder="Email" required>
+                                <label for="email">Nome Do Grupo</label>
+                                <input class="form-control" name="gruponame" value= "" placeholder="Insira Aqui o nome do Grupo" required>
 
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Nome</label>
-                                <input type="text" class="form-control" id="name" name="nome"
-                                    placeholder="Nome" required="">
+                                <label for="password">Imagem-URL</label>
+                                <input type="text" class="form-control" id="img" name="img"
+                                    placeholder="Insira Aqui o URL da imagem do Grupo" required="">
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Senha</label>
-                                <input type="password" class="form-control" id="password" name="senha"
-                                    placeholder="Password" required="">
+                                <label for="password">Descrição</label>
+                                <input type="password" class="form-control" id="descricao" name="descricao"
+                                    placeholder="Insira Aqui a Descrição do Grupo" required="">
                             </div>
                             
                             <button type="submit" class="btn btn-primary btn-block">Entrar</button>
