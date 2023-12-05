@@ -34,8 +34,4 @@ class Usuario {
         }
     }
 
-    public function getName()
-    {
-        return $nome;
-    }
 }
