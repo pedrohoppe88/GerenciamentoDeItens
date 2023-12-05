@@ -101,7 +101,7 @@
 
         /* Navbar */
         .custom-navbar {
-            background-color: #2c3e50;
+            background-color: #343a40;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -330,7 +330,7 @@ if(window.location.href.indexOf('#myModal') != -1) {
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg custom-navbar">
-        <a class="navbar-brand" href="#">DayZ Itens</a>
+        <a class="navbar-brand" href="#">ItensDB</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
@@ -347,6 +347,17 @@ if(window.location.href.indexOf('#myModal') != -1) {
             <li data-target="#customCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#customCarousel" data-slide-to="1"></li>
         </ol>
+
+        <?php
+                                        @$cod = $_REQUEST['cod'];
+                                        if (isset($cod)) {
+                                            if ($cod == '171') {
+                                                echo ("<script>alert('Erro: Credenciais Inválidas');</script>");
+                                              
+                                            
+                                            }
+                                        }
+                                        ?>
 
         <!-- Slides -->
         <div class="carousel-inner">
@@ -384,7 +395,7 @@ if(window.location.href.indexOf('#myModal') != -1) {
                                                 echo ('<input type="checkbox" class="alertCheckbox" autocomplete="off" />');
                                                 echo ('<div class="alert error">');
                                                 echo ('  <span class="alertClose">X</span>');
-                                                echo (' <span class="alertText">Erro! Email Inválido.');
+                                                echo (' <span class="alertText">Erro! A Conta Não Foi Criada');
                                                 echo ('  <br class="clear"/></span>');
                                                 echo (' </div>');
                                                 echo ('</label>');

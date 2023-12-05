@@ -49,7 +49,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
 
     <!-- Navbar superior -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Nome do Jogo</a>
+        <a class="navbar-brand" href="#">Itens</a>
         <div class="ml-auto">
             <img src="url_da_foto_do_usuario" alt="" class="rounded-circle" width="40">
             <span class="text-white"><?php

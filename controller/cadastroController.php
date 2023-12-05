@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($nome) || empty($email) || empty($senha)) {
         die("Dados inválidos."); 
     }
+    
 
     $user = new Usuario();
 

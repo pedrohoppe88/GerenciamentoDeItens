@@ -11,7 +11,7 @@
     <style>
 
       body{
-        background-image: linear-gradient(to bottom right, gray, black);
+        background-image: linear-gradient(to left bottom, gray, black);
 
       }
 
@@ -88,7 +88,7 @@
       <input type="password" class="form-control" id="senha" placeholder="Insira a Senha" name="senha">
     </div>
     <div class="checkbox">
-      <label style="color:#fff;"><input type="checkbox" name="remember"> Remember me</label>
+      <label style="color:#fff;"><input type="checkbox" name="remember">Lembrar-me</label>
     </div>
     <button type="submit" class="btn btn-default">Enviar</button>
   </form>
