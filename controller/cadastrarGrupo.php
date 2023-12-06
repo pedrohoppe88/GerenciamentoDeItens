@@ -1,5 +1,5 @@
 <?php
-require_once "model/conexaoPDO.php";
+require_once "../model/conexaoPDO.php";
 
 class Grupo 
 {
@@ -11,31 +11,81 @@ class Grupo
         $this->conn = $conexao->getConnection();
     }
 
-    public function registerGroup($NomeGrupo, $urlImg, $descricao) 
+    public function criarGrupo($nomeGrupo, $senha, $descricao, $urlImg = null) 
     {
-        $checkQuery = "SELECT * FROM sua_tabela WHERE NomeGrupo = :NomeGrupo";
-        $check = $this->conn->prepare($checkQuery);
-        $check->bindParam(':NomeGrupo', $NomeGrupo);
-        $check->execute();
+        $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
 
-        if($check->rowCount() > 0) 
-        {
-            return "Nome do grupo já existente";
-        }
-
-        $groupQuery = "INSERT INTO sua_tabela (NomeGrupo, urlImg, descricao) VALUES (:NomeGrupo, :urlImg, :descricao)";
-        $stmt = $this->conn->prepare($groupQuery);
-        $stmt->bindParam(':NomeGrupo', $NomeGrupo);
-        $stmt->bindParam(':urlImg', $urlImg);
+        $query = "INSERT INTO grupos (NomeGrupo, senha, Descricao, urlImg) VALUES (:nomeGrupo, :senha, :descricao, :urlImg)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nomeGrupo', $nomeGrupo);
+        $stmt->bindParam(':senha', $hashedSenha);
         $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':urlImg', $urlImg);
 
-        if($stmt->execute())
-        {
-            return "Registro bem-sucedido.";
-        } else {
-            return "Erro durante o registro.";
-        }
+        return $stmt->execute() ? "Grupo criado com sucesso." : "Erro ao criar o grupo.";
     }
-}
 
+    public function entrarNoGrupo($idUsuario, $idGrupo)
+    {
+        $query = "INSERT INTO usuariosGrupos (IDUsuario, IDGrupo) VALUES (:idUsuario, :idGrupo)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':idUsuario', $idUsuario);
+        $stmt->bindParam(':idGrupo', $idGrupo);
+
+        return $stmt->execute() ? "Entrou no grupo com sucesso." : "Erro ao entrar no grupo.";
+    }
+
+    public function listarItensDoGrupo($idGrupo)
+    {
+        $query = "SELECT ID, NomeItem FROM itens WHERE IDGrupo = :idGrupo";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':idGrupo', $idGrupo);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getGrupoPorID($idGrupo)
+    {
+        $query = "SELECT ID, NomeGrupo, Descricao FROM grupos WHERE ID = :idGrupo";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':idGrupo', $idGrupo);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function listarGrupos()
+    {
+        $query = "SELECT ID, NomeGrupo, Descricao FROM grupos";
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function pesquisarGrupos($termoPesquisa)
+    {
+        $query = "SELECT ID, NomeGrupo, Descricao FROM grupos WHERE NomeGrupo LIKE :termoPesquisa";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':termoPesquisa', '%' . $termoPesquisa . '%', PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function listarGruposUsuario($idUsuario)
+    {
+        $query = "SELECT g.ID, g.NomeGrupo, g.Descricao FROM grupos g
+                  INNER JOIN usuariosGrupos ug ON g.ID = ug.IDGrupo
+                  WHERE ug.IDUsuario = :idUsuario";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':idUsuario', $idUsuario);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    
+
+}
 ?>
