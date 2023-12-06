@@ -15,14 +15,19 @@ class Grupo
     {
         $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO grupos (NomeGrupo, senha, Descricao, urlImg) VALUES (:nomeGrupo, :senha, :descricao, :urlImg)";
+        $query = "INSERT INTO grupos (NomeGrupo, Senha, Descricao, UrlImg) VALUES (:nomeGrupo, :senha, :descricao, :urlImg)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':nomeGrupo', $nomeGrupo);
         $stmt->bindParam(':senha', $hashedSenha);
         $stmt->bindParam(':descricao', $descricao);
         $stmt->bindParam(':urlImg', $urlImg);
 
-        return $stmt->execute() ? "Grupo criado com sucesso." : "Erro ao criar o grupo.";
+        try {
+            $stmt->execute();
+            return "Grupo criado com sucesso.";
+        } catch (PDOException $e) {
+            return "Erro ao criar o grupo. Detalhes: " . $e->getMessage();
+        }
     }
 
     public function entrarNoGrupo($idUsuario, $idGrupo)

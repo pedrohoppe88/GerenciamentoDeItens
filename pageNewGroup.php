@@ -9,7 +9,7 @@
 
 <h2>Criar Grupo</h2>
 
-<form action="controller/cadastrarGrupo.php" method="post">
+<form action="controller/cadastrarGrupoController.php" method="post">
     <label for="nomeGrupo">Nome do Grupo:</label>
     <input type="text" id="nomeGrupo" name="nomeGrupo" required><br>
 
