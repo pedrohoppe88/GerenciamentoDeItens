@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 setcookie('email', $email, time() + (-86400 * 7), "/");
             }
         }
-        header("Location: ../teste/home.php");
+        header("Location: ../pageNewGroup.php");
     } else {
         echo "Detalhes de login inválidos!";
     }

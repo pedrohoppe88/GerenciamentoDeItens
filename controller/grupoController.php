@@ -17,11 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmtGrupo->bindParam(':grupo_nome', $grupoNome);
         $stmtGrupo->execute();
 
-        if($stmtGrupo->rowCount() > 0){
-            echo "nome do grupo já existe"
-            exit();
-        }
-
         $grupo = $stmtGrupo->fetch();
     } catch (PDOException $e) {
         echo 'Erro: ' . $e->getMessage();

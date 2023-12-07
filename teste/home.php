@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once "../controller/loginController.php";
-require_once "../controller/controllerGrupo.php";
 
 
 
@@ -19,13 +18,12 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
     echo "erro";
 }
 
-if (!isset($_SESSION['login']) || empty($_SESSION['login']) || !isset($_SESSION['grupo_id'])) {
-    header('Location: index.php');
-    exit();
-}
-
 $userID = $_SESSION['login'];
 $grupoID = $_SESSION['grupo_id'];
+
+if($grupoID <= 0 ) {
+    header("Location: ../showGroups.php");
+}
 
 include_once '../model/conexaoPDO.php';
 $conexao = new Conexao();
