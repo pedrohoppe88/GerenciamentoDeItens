@@ -7,7 +7,7 @@ if (!isset($_SESSION['login'])) {
 }
 
 if (!isset($_SESSION['grupo_id']) || !isset($_SESSION['grupo_nome'])) {
-    header('Location: escolherGrupo.php');
+    header('Location: ../pageNewGroup.php');
     exit();
 }
 

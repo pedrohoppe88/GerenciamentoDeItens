@@ -32,5 +32,5 @@ CREATE TABLE itens (
     Quantidade INT NOT NULL,
     Descricao TEXT,
     IDGrupo INT,
-    FOREIGN KEY (IDGrupo) REFERENCES Grupos(ID)
+    FOREIGN KEY (IDGrupo) REFERENCES grupos(ID)
 );
