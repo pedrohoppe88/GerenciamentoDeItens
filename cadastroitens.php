@@ -101,7 +101,7 @@ if (isset($_GET['id'])) {
     <input type="text" class="form-control" id="img" name="img" value="<?=$img?>"required />
 </div>
 <div class="form-group">
-    <label for="NomeItem">NomeItem</label>
+    <label for="NomeItem">Nome do item</label>
     <input type="text" class="form-control" id="NomeItem" name="NomeItem" value="<?=$NomeItem?>" required />
 </div>
 <div class="form-group">
