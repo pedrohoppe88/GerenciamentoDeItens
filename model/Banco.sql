@@ -26,10 +26,17 @@ CREATE TABLE usuariosGrupos (
 
 CREATE TABLE itens (
     ID INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< Updated upstream
     NomeItem VARCHAR(255) NOT NULL,
     Quantidade INT,
     Descricao TEXT,
     Img VARCHAR(255) DEFAULT NULL,
+=======
+    nome VARCHAR(255) NOT NULL,
+    quantidade INT,
+    descricao TEXT,
+    img VARCHAR(255) DEFAULT NULL,
+>>>>>>> Stashed changes
     IDGrupo INT,
     FOREIGN KEY (IDGrupo) REFERENCES Grupos(ID)
 );

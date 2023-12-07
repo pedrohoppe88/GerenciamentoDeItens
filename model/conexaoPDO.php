@@ -8,6 +8,8 @@ class Conexao
     protected $password;
     protected $conn;
 
+    public $total = 0;
+
     public function __construct()
     {
         $this->host = 'localhost';
@@ -31,6 +33,19 @@ class Conexao
 
         return $this->conn;
     }
+
+        public function Consultar($sql){
+            try {
+                if ($result = $this->conn->query($sql)){
+                    $this->total = $result->rowCount();
+                    return $result;
+                }
+                $this->total = 0;
+                return null;
+            } catch (Exception) {
+                $this->close();
+            }
+        }
 
     public function close()
     {
