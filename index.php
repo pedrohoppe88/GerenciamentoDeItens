@@ -14,99 +14,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <style>
-        .custom-navbar {
-            background-color: #343a40;
-            /* Dark Gray */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .custom-navbar .nav-link {
-            color: #FFFFFF;
-            transition: color 0.3s ease;
-        }
-
-        .custom-navbar .nav-link:hover {
-            color: #FFD700;
-            /* Golden color for hover effect */
-        }
-
-        /* Carousel custom styles */
-
-        .carousel-item {
-            max-width: 100%;
-            width: 100%;
-            height: 51rem;
-        }
-
-        .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 8px;
-        }
-
-        /* Card custom styles */
-        .custom-card {
-            border: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .custom-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-img-top {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-
-        /* Call to Action */
-        .btn-primary {
-            background-color: #FFD700;
-            /* Golden color */
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #ffb300;
-        }
-
-        /* Newsletter Signup */
-        .bg-light {
-            background-color: #f9f9f9 !important;
-            /* Slightly different light gray for differentiation */
-        }
-
-        .form-control {
-            box-shadow: none;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 50px;
-        }
-
         /* Global Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            margin-bottom: 60px;
-            /* Increasing spacing between sections */
+            background-color: #1a1a1a;
+            color: #ffffff;
         }
 
         /* Navbar */
         .custom-navbar {
-            background-color: #343a40;
+            background-color: #292b2c;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .custom-navbar .nav-link {
-            color: #ecf0f1;
+            color: #ffffff;
             transition: color 0.3s ease;
         }
 
@@ -116,7 +39,6 @@
 
         /* Carousel */
         .carousel-caption {
-
             max-width: 100%;
             background-color: rgba(44, 62, 80, 0.7);
             border-radius: 8px;
@@ -124,205 +46,82 @@
 
         /* Call to Action */
         .btn-primary {
-            background-color: #e74c3c;
+            background-color: #FFD700;
             border: none;
         }
 
         .btn-primary:hover {
-            background-color: #c0392b;
+            background-color: #ffb300;
+        }
+
+        /* Cards */
+        .custom-card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            background-color: #292b2c;
+            color: #ffffff;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Testimonials */
         blockquote {
-            background-color: #ecf0f1;
+            background-color: #2c3e50;
             padding: 20px;
-            border-left: 8px solid #e74c3c;
+            border-left: 8px solid #FFD700;
             border-radius: 8px;
+            color: #ffffff;
         }
 
         /* Newsletter Signup */
         .bg-light {
-            background-color: #ecf0f1;
-        }
-
-        .form-control {
-            box-shadow: none;
-            border: none;
-            border-bottom: 2px solid #7f8c8d;
-            border-radius: 0;
+            background-color: #2c3e50 !important;
         }
 
         /* Footer */
         footer {
-            background-color: #ecf0f1;
+            background-color: #292b2c;
+            color: #ffffff;
         }
 
-        footer a {
-            color: #ecf0f1;
-            transition: color 0.3s ease;
+        /* Modal */
+        .modal-content {
+            background-color: #2c3e50;
+            color: #ffffff;
         }
 
-        footer a:hover {
-            color: #FFD700;
+        .modal-header,
+        .modal-footer {
+            border-bottom: 1px solid #FFD700;
         }
 
-        .container {
-            margin: 80px auto;
-            /* Uniformizando margens */
-        }
-
-        /* Ajustes para dispositivos móveis */
-        @media (max-width: 1660px) {
-            .carousel-item {
-                height: auto;
-                /* Ajustando o tamanho do carrossel para dispositivos móveis */
-            }
-
-            .blockquote {
-                font-size: 14px;
-                /* Ajustando o tamanho da fonte dos depoimentos para dispositivos móveis */
-            }
-        }
-
-        /* Ajustes para dispositivos móveis */
-        @media (max-width: 768px) {
-            .carousel-item {
-                height: auto;
-                /* Ajustando o tamanho do carrossel para dispositivos móveis */
-            }
-
-            .blockquote {
-                font-size: 14px;
-                /* Ajustando o tamanho da fonte dos depoimentos para dispositivos móveis */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .card-itens {
-                margin: 32px;
-            }
-        }
-
-        /* Melhorias na experiência do usuário */
-        .carousel-caption {
-            padding: 20px;
-            /* Adicionando padding para uma melhor visualização do texto sobre as imagens */
-        }
-
-        .custom-card:hover {
-            transform: translateY(-5px);
-            /* Reduzindo o efeito hover nos cards para ser mais sutil */
-        }
-
-        .container mt-5 cards {
-            margin-top: 50px;
-        }
-
-        section {
-            margin-top: 100px;
-            /* Aumenta a margem superior para cada seção */
-        }
-
-        .CardSection {
-            margin-top: 170px;
-        }
-
-        .sectionCall {
-            margin-top: 150px;
-        }
-
-        .sectionTestemunhas {
-            margin-top: 160px;
-        }
-
-        .sectionNew {
-            margin-top: 30px;
-        }
-
-      
+        /* Alerts */
         .alert {
-  position: relative;
-  top: 10;
-  left: 0;
-  width: auto;
-  height: auto;
-  padding: 10px;
-  margin: 10px;
-  line-height: 1.8;
-  border-radius: 5px;
-  cursor: hand;
-  cursor: pointer;
-  font-family: sans-serif;
-  font-weight: 400;
-}
+            background-color: #2c3e50;
+            color: #ffffff;
+            border-radius: 5px;
+            margin: 10px;
+        }
 
-.alertCheckbox {
-  display: none;
-}
-
-:checked + .alert {
-  display: none;
-}
-
-.alertText {
-  display: table;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 16px;
-}
-
-.alertClose {
-  float: right;
-  padding-top: 5px;
-  font-size: 10px;
-}
-
-.clear {
-  clear: both;
-}
-
-.info {
-  background-color: #EEE;
-  border: 1px solid #DDD;
-  color: #999;
-}
-
-.success {
-  background-color: #EFE;
-  border: 1px solid #DED;
-  color: #9A9;
-}
-
-.notice {
-  background-color: #EFF;
-  border: 1px solid #DEE;
-  color: #9AA;
-}
-
-.warning {
-  background-color: #FDF7DF;
-  border: 1px solid #FEEC6F;
-  color: #C9971C;
-}
-
-.error {
-  background-color: #FEE;
-  border: 1px solid #EDD;
-  color: #A66;
-}
-
+        .error {
+            background-color: #c0392b;
+            border: 1px solid #962d22;
+            color: #ffffff;
+        }
     </style>
-<script>
-$(document).ready(function() {
 
-if(window.location.href.indexOf('#myModal') != -1) {
-  $('#myModal').modal('show');
-}
-
-});
-</script>
-
-
+    <script>
+        $(document).ready(function() {
+            if (window.location.href.indexOf('#myModal') != -1) {
+                $('#myModal').modal('show');
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -419,7 +218,7 @@ if(window.location.href.indexOf('#myModal') != -1) {
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+
                 <div class="col-md-4">
                     <div class="custom-card">
                         <img src="path_to_card2_image.jpg" class="card-img-top" alt="Card Image 2">
@@ -430,7 +229,6 @@ if(window.location.href.indexOf('#myModal') != -1) {
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="col-md-4">
                     <div class="custom-card">
                         <img src="path_to_card3_image.jpg" class="card-img-top" alt="Card Image 3">
@@ -451,15 +249,13 @@ if(window.location.href.indexOf('#myModal') != -1) {
         <div class="container mt-5 text-center">
             <h2>Pronto para começar sua jornada?</h2>
             <p>Registre-se agora e explore todas as funcionalidades que oferecemos.</p>
-            <!-- Button trigger modal -->
-            <!-- Button to Open the Modal -->
+
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Registrar-se</button>
 
-            <!-- Modal -->
             <div class="modal fade" name="myModal" id="myModal" role="dialog">
                 <div class="modal-dialog">
 
-                    <!-- Modal content-->
+
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -539,7 +335,6 @@ if(window.location.href.indexOf('#myModal') != -1) {
         </div>
     </section>
 
-    <!-- Newsletter Signup -->
     <section class="sectionNew">
 
         <div class="container mt-5 py-5 bg-light">
