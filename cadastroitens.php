@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'model/conexaoPDO.php';
 
 $db = new Conexao();
@@ -10,8 +10,18 @@ $NomeItem = '';
 $Tipo = 0;
 $Quantidade = 1;
 $Descricao = '';
+$IDGrupo = 0;
 
-if(isset($_POST['id'])) {
+session_start();
+
+if (isset($_SESSION['grupo_id'])) {
+    $IDGrupo = $_SESSION['grupo_id'];
+} else {
+    echo 'error';
+    exit;
+}
+
+if (isset($_POST['id'])) {
     $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
     $img = filter_input(INPUT_POST, "img", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $NomeItem = filter_input(INPUT_POST, "NomeItem", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -19,52 +29,51 @@ if(isset($_POST['id'])) {
     $Quantidade = filter_input(INPUT_POST, "Quantidade", FILTER_SANITIZE_NUMBER_INT);
     $Descricao = filter_input(INPUT_POST, "Descricao", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-
-if(!$id) {
-   $stm = $conn->prepare("INSERT INTO itens(img, NomeItem, Tipo, Quantidade, Descricao) VALUES (:img,:NomeItem,:Tipo,:Quantidade,:Descricao)");
-}
-else{
-    $stm = $conn->prepare("UPDATE itens SET img=:img, NomeItem=:NomeItem, Tipo=:Tipo, Quantidade=:Quantidade, Descricao=:Descricao WHERE id=:id");
-    $stm->bindValue(':id', $id);
-}
-$stm->bindValue(':img', $img);
-$stm->bindValue(':NomeItem', $NomeItem);
-$stm->bindValue(':Tipo', $Tipo);
-$stm->bindValue(':Quantidade', $Quantidade);
-$stm->bindValue(':Descricao', $Descricao);
-$stm->execute();
-
-header('Location: itens.php');
-exit;
-}
-
-if(isset($_GET['id'])){
-    $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-    
-    if(!$id) {
-        header('Location: itens.php');
-    exit;
+    if (!$id) {
+        $stm = $conn->prepare("INSERT INTO itens(img, NomeItem, Tipo, Quantidade, Descricao, IDGrupo) VALUES (:img,:NomeItem,:Tipo,:Quantidade,:Descricao,:IDGrupo)");
+    } else {
+        $stm = $conn->prepare("UPDATE itens SET img=:img, NomeItem=:NomeItem, Tipo=:Tipo, Quantidade=:Quantidade, Descricao=:Descricao WHERE id=:id AND IDGrupo=:IDGrupo");
+        $stm->bindValue(':id', $id);
     }
-    
-    $stm = $conn->prepare('SELECT * FROM itens WHERE id=:id');
-    $stm->bindValue('id', $id);
+
+    $stm->bindValue(':img', $img);
+    $stm->bindValue(':NomeItem', $NomeItem);
+    $stm->bindValue(':Tipo', $Tipo);
+    $stm->bindValue(':Quantidade', $Quantidade);
+    $stm->bindValue(':Descricao', $Descricao);
+    $stm->bindValue(':IDGrupo', $IDGrupo);
     $stm->execute();
-    $result = $stm->fetch();
-    
-    if(!$result){
+
+    header('Location: itens.php');
+    exit;
+}
+
+if (isset($_GET['id'])) {
+    $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+    $IDGrupo = filter_input(INPUT_GET, "IDGrupo", FILTER_SANITIZE_NUMBER_INT);
+    if (!$id || $IDGrupo !== $_SESSION['grupo_id']) {
         header('Location: itens.php');
         exit;
     }
-    
+
+    $stm = $conn->prepare('SELECT * FROM itens WHERE id=:id AND IDGrupo=:IDGrupo');
+    $stm->bindValue(':id', $id);
+    $stm->bindValue(':IDGrupo', $IDGrupo);
+    $stm->execute();
+    $result = $stm->fetch();
+
+    if (!$result) {
+        header('Location: itens.php');
+        exit;
+    }
+
     $img = $result['img'];
     $NomeItem = $result['NomeItem'];
     $Tipo = $result['Tipo'];
     $Quantidade = $result['Quantidade'];
     $Descricao = $result['Descricao'];
-    }
-
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +93,7 @@ if(isset($_GET['id'])){
 <form method="post" autocomplete="off">
 <div class="card-body">
 <input type="hidden" name="id" value="<?=$id?>" />
+<input type="hidden" name="IDGrupo" value="<?=$IDGrupo?>" />
 
 
 <div class="form-group">

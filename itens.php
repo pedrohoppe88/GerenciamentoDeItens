@@ -1,42 +1,79 @@
 <?php 
 require_once 'model/conexaoPDO.php';
 
-
-
-
 $db = new Conexao();
 $conn = $db->getConnection();
 
-$arrayTipo = [1 => 'N/A', 2 => 'Ferramentas', 3 => 'Armas', 4 => 'Comida', 5 => 'Remédio'];
+$id = 0;
+$img = '';
+$NomeItem = '';
+$Tipo = 0;
+$Quantidade = 1;
+$Descricao = '';
+$IDGrupo = 0;
+
+session_start();
 
 
-if(isset($_GET['excluir'])){
-    $id = filter_input(INPUT_GET, 'excluir', FILTER_SANITIZE_NUMBER_INT);
-    
-    if($id){
-    $conn->exec('DELETE FROM itens WHERE id=' . $id);
-    
+if(isset($_SESSION['grupo_id'])) {
+    $IDGrupo = $_SESSION['grupo_id'];
+    echo $IDGrupo;
+} else {
+    echo 'não entrou';
+}
+
+if(isset($_GET['id'])){
+    $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+
+    if(!$id) {
+        header('Location: itens.php');
+        exit;
     }
+
+    $stm = $conn->prepare('SELECT * FROM itens WHERE id=:id AND WHERE IDGrupo=:IDGrupo ');
+    $stm->bindValue(':id', $id);
+    $stm->execute();
+    $result = $stm->fetch();
+
+    if(!$result){
+        header('Location: itens.php');
+        exit;
+    }
+
+    $img = $result['img'];
+    $NomeItem = $result['NomeItem'];
+    $Tipo = $result['Tipo'];
+    $Quantidade = $result['Quantidade'];
+    $Descricao = $result['Descricao'];
+}
+
+
+if(isset($_POST['id'])) {
+    $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);
+    $img = filter_input(INPUT_POST, "img", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $NomeItem = filter_input(INPUT_POST, "NomeItem", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $Tipo = filter_input(INPUT_POST, "Tipo", FILTER_SANITIZE_NUMBER_INT);
+    $Quantidade = filter_input(INPUT_POST, "Quantidade", FILTER_SANITIZE_NUMBER_INT);
+    $Descricao = filter_input(INPUT_POST, "Descricao", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $IDGrupo = filter_input(INPUT_POST, "IDGrupo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+
+    $stm = $conn->prepare("INSERT INTO itens(img, NomeItem, Tipo, Quantidade, Descricao, IDGrupo) VALUES (:img,:NomeItem,:Tipo,:Quantidade,:Descricao, :IDGrupo)");
+    $stm->bindValue(':img', $img);
+    $stm->bindValue(':NomeItem', $NomeItem);
+    $stm->bindValue(':Tipo', $Tipo);
+    $stm->bindValue(':Quantidade', $Quantidade);
+    $stm->bindValue(':Descricao', $Descricao);
+    $stm->bindValue(':IDGrupo', $IDGrupo); 
+    $stm->execute();
+
+
 
     header('Location: itens.php');
     exit;
-    
-    }
-
-if ($conn) {
-
-    $results = $conn->query('SELECT * FROM itens')->fetchAll();
-
-    
-    foreach ($results as $row) {
-        //
-    }
-} else {
-    // Exibe uma mensagem de erro se a conexão falhou
-    echo "Erro na conexão com o banco de dados.";
 }
-
 ?>
+
 
 
 <!DOCTYPE html>
@@ -53,7 +90,7 @@ if ($conn) {
 <main class="container">
     <div class="card mt-4">
 <div class="card-header d-flex justify-content-between align-items-center">
-    <h5>Itens</h5>
+<h5>Itens do Grupo: <?= $_SESSION['grupo_nome'] ?></h5>
     <a class="btn btn-success" href="cadastroitens.php">Adicionar</a>
 </div>
 <div class="card-body">
@@ -68,7 +105,7 @@ if ($conn) {
         </tr>
     </thead>
     <tbody>
-        <?php foreach($results as $item): ?>
+    <?php foreach ($itens as $item) : ?>
         <tr>
 <td><img src="<?= $item['img']?>" alt="Imagem do Item" style="max-width: 100px; max-height: 100px;"></td>
 <td><?= $item['NomeItem']?></td>
