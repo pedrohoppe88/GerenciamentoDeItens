@@ -29,7 +29,7 @@ CREATE TABLE itens (
 	img VARCHAR(255) DEFAULT NULL,
     NomeItem VARCHAR(255) NOT NULL,
     Tipo INT NOT NULL,
-    Quantidade INT NOT NULL,
+    Quantidade BIGINT NOT NULL,
     Descricao TEXT,
     IDGrupo INT,
     FOREIGN KEY (IDGrupo) REFERENCES grupos(ID)
