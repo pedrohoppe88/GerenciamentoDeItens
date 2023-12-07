@@ -95,7 +95,7 @@ $nomesUsuariosGrupo = $stmtUsuariosGrupo->fetchAll(PDO::FETCH_COLUMN);
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
+                            <a class="nav-link text-white" href="../itens.php">
                                 <span data-feather="plus"></span>
                                 Adicionar Itens
                             </a>
