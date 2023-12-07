@@ -30,7 +30,7 @@ class Grupo
         try {
             $stmt->execute();
             echo "Grupo criado com sucesso.";
-            header("Location: ../teste/home.php");
+            header("Location: ../showGroups.php");
         } catch (PDOException $e) {
             return "Erro ao criar o grupo. Detalhes: " . $e->getMessage();
         }
