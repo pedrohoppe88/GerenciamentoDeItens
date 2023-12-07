@@ -1,1 +1,0 @@
-# falta autentication pq se voltar depois de dar logout da bug

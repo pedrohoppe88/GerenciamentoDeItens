@@ -37,6 +37,7 @@ $grupos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .btn-primary {
             background-color: #61dafb;
             border-color: #61dafb;
+            margin: 0px 10px;
         }
 
         .btn-primary:hover {
@@ -115,10 +116,13 @@ $grupos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-    <!-- Navbar superior -->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Grupos</a>
-        <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#modalGrupos">
+        <a class="btn btn-primary d-flex" href="pageNewGroup.php">
+            Criar Um Grupo
+    </a>
+        <button type="button" class="btn btn-primary d-flex" data-toggle="modal" data-target="#modalGrupos">
             Entrar em um Grupo
         </button>
     </nav>
@@ -142,7 +146,6 @@ $grupos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <!-- Modal para todos os grupos -->
     <div class="modal fade" id="modalGrupos" tabindex="-1" role="dialog" aria-labelledby="modalGruposLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
