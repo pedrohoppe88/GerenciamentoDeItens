@@ -27,7 +27,8 @@ CREATE TABLE usuariosGrupos (
 CREATE TABLE itens (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     NomeItem VARCHAR(255) NOT NULL,
-    Quantidade INT,
+    Tipo INT NOT NULL,
+    Quantidade INT NOT NULL,
     Descricao TEXT,
     Img VARCHAR(255) DEFAULT NULL,
     IDGrupo INT,
