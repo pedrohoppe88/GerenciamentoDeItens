@@ -64,12 +64,6 @@
 .reg {
   color: white;
 }
-<<<<<<< Updated upstream
-=======
-        
-
-
->>>>>>> Stashed changes
 
     </style>
 
@@ -96,11 +90,8 @@
     <input type="text" class="form-control" id="urlImg" name="urlImg"><br>
 
     <input type="submit" style="color:#fff;" value="Criar Grupo">
-<<<<<<< Updated upstream
     <br>
     <a class="linkcard" href="showGroups.php">Ver grupos já existentes</a> 
-=======
->>>>>>> Stashed changes
 </form>
         </div>
         
