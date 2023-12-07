@@ -13,6 +13,11 @@ class Grupo
 
     public function criarGrupo($nomeGrupo, $senha, $descricao, $urlImg = null) 
     {
+        if ($this->verificarExistenciaGrupo($nomeGrupo)) {
+            return "Erro: Já existe um grupo com esse nome.";
+            header("Location: ../showGroups.php");
+        }
+
         $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
 
         $query = "INSERT INTO grupos (NomeGrupo, Senha, Descricao, UrlImg) VALUES (:nomeGrupo, :senha, :descricao, :urlImg)";
@@ -28,6 +33,16 @@ class Grupo
         } catch (PDOException $e) {
             return "Erro ao criar o grupo. Detalhes: " . $e->getMessage();
         }
+    }
+
+    private function verificarExistenciaGrupo($nomeGrupo)
+    {
+        $query = "SELECT ID FROM grupos WHERE NomeGrupo = :nomeGrupo";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nomeGrupo', $nomeGrupo);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0; // é a mesma coisa do que o if, mas como tem que retornar fiz assim e funcionou
     }
 
     public function entrarNoGrupo($idUsuario, $idGrupo)
@@ -89,8 +104,5 @@ class Grupo
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    
-
 }
 ?>
