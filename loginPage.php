@@ -64,9 +64,6 @@
 .reg {
   color: white;
 }
-        
-
-
 
     </style>
 
