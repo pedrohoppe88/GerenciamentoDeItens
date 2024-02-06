@@ -85,7 +85,7 @@ class Grupo
 
     public function pesquisarGrupos($termoPesquisa)
     {
-        $query = "SELECT ID, NomeGrupo, Descricao FROM grupos WHERE NomeGrupo LIKE :termoPesquisa";
+        $query = "SELECT ID, NomeGrupo, Descricao FROM gruposWHERE NomeGrupo LIKE :termoPesquisa";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':termoPesquisa', '%' . $termoPesquisa . '%', PDO::PARAM_STR);
         $stmt->execute();
@@ -106,4 +106,6 @@ class Grupo
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+
+
 ?>
