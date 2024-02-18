@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    
 
     if ($grupo && password_verify($senha_grupo, $grupo['senha'])) {
         $_SESSION['grupo_id'] = $grupo['ID'];
